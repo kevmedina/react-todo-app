@@ -1,12 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import {Switch , Route} from "react-router-dom"
+import "./App.css";
+import Navbar from "./components/Navbar"
+import MainTodo from "./components/basicTodo/MainTodo"
 
 const App = () => {
+
   return (
     <div className="App">
-      <h1>React Todo App</h1>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={MainTodo} />
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
