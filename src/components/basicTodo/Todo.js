@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Todo = ({ todo, deleteTodo }) => {
-  // console.log("Todo: ", todo);
+const Todo = ({ todo, deleteTodo, updateTodo }) => {
+  const [editTodo, setEditTodo] = useState(todo.task);
+  const [toggleEditForm, setToggleEditForm] = useState(false);
+
+  const handleChange = (e) => {
+    setEditTodo(e.target.value);
+  };
+
   const handleRemove = () => {
     deleteTodo(todo.id);
   };
 
+  const handleToggle = () => {
+    setToggleEditForm(!toggleEditForm);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateTodo({ ...todo, task: editTodo });
+    handleToggle();
+  };
+
   return (
     <div className="todo">
-      {todo.task}
+      <input type="checkbox" />
+      {toggleEditForm ? (
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} type="text" value={editTodo} />
+        </form>
+      ) : (
+        <span>{todo.task}</span>
+      )}
+      <span>
+        <i className="fa fa-edit" onClick={handleToggle}></i>
+      </span>
       <span>
         <i className="fa fa-trash" onClick={handleRemove}></i>
       </span>
