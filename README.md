@@ -1,5 +1,3 @@
-# ashraf-branch created
-
 Collaboration steps:
 
 1. create a branch <git checkout -b branch-name>
