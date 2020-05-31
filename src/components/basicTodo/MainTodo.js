@@ -9,11 +9,15 @@ const MainTodo = () => {
     setTodos([...todos, todo]);
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div className="main-todo">
       <h1>Basic Todo App</h1>
-      <AddTodo addTodo={addTodo}/>
-      <TodoList todos={todos}/>
+      <AddTodo addTodo={addTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 };
