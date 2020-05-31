@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const Todo = ({ todo, deleteTodo, updateTodo }) => {
+const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
   const [editTodo, setEditTodo] = useState(todo.task);
   const [toggleEditForm, setToggleEditForm] = useState(false);
 
@@ -22,15 +22,21 @@ const Todo = ({ todo, deleteTodo, updateTodo }) => {
     handleToggle();
   };
 
+  const handleCheckbox = (e) => {
+    completeTodo(todo.id);
+  };
+
   return (
     <div className="todo">
-      <input type="checkbox" />
+      <input type="checkbox" onClick={handleCheckbox} />
       {toggleEditForm ? (
         <form onSubmit={handleSubmit}>
           <input onChange={handleChange} type="text" value={editTodo} />
         </form>
       ) : (
-        <span>{todo.task}</span>
+        <span className={`${todo.completed ? 'completed' : ''}`}>
+          {todo.task}
+        </span>
       )}
       <span>
         <i className="fa fa-edit" onClick={handleToggle}></i>

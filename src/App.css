@@ -26,3 +26,7 @@
   height: 20px;
   border: 1px solid black;
 }
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
