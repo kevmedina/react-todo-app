@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
   const [editTodo, setEditTodo] = useState(todo.task);
@@ -34,7 +34,7 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
           <input onChange={handleChange} type="text" value={editTodo} />
         </form>
       ) : (
-        <span className={`${todo.completed ? 'completed' : ''}`}>
+        <span className={`${todo.completed ? "completed" : ""}`}>
           {todo.task}
         </span>
       )}
