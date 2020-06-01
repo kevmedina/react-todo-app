@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const Navbar = () => {
   const Nav = styled.nav`
-    background-color: blue;
+    background-color: #5F9EA0; 
     height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
-  `;
+  `; // 
 
   return (
     <Nav>
