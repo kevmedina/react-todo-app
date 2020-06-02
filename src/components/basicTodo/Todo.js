@@ -22,7 +22,7 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
     handleToggle();
   };
 
-  const handleCheckbox = (e) => {
+  const handleCheckbox = () => {
     completeTodo(todo.id);
   };
 
