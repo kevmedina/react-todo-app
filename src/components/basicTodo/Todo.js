@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
-  const [editTodo, setEditTodo] = useState(todo.task);
+  const [editTodo, setEditTodo] = useState(todo.title);
   const [toggleEditForm, setToggleEditForm] = useState(false);
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateTodo({ ...todo, task: editTodo });
+    updateTodo({ ...todo, title: editTodo });
     handleToggle();
   };
 
@@ -27,24 +27,34 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
   };
 
   return (
-    <div className="todo">
-      <input type="checkbox" onClick={handleCheckbox} />
-      {toggleEditForm ? (
-        <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} type="text" value={editTodo} />
-        </form>
-      ) : (
-        <span className={`${todo.completed ? 'completed' : ''}`}>
-          {todo.task}
-        </span>
-      )}
-      <span>
+    <tr>
+      <th scope="row">#{todo.id}</th>
+      <td>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={handleCheckbox}
+        />
+      </td>
+      <td>
+        {' '}
+        {toggleEditForm ? (
+          <form onSubmit={handleSubmit}>
+            <input onChange={handleChange} type="text" value={editTodo} />
+          </form>
+        ) : (
+          <span className={`${todo.completed ? 'completed' : ''} title`}>
+            {todo.title}
+          </span>
+        )}
+      </td>
+      <td>
         <i className="fa fa-edit" onClick={handleToggle}></i>
-      </span>
-      <span>
+      </td>
+      <td>
         <i className="fa fa-trash" onClick={handleRemove}></i>
-      </span>
-    </div>
+      </td>
+    </tr>
   );
 };
 
