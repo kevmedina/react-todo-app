@@ -6,7 +6,6 @@ const MainTodo = () => {
   const [todos, setTodos] = useState([]);
 
   const fetchPosts = async () => {
-    // const URL = 'http://localhost:3001/api/v1/posts';
     const URL = 'https://jsonplaceholder.typicode.com/todos';
     const response = await fetch(URL, {
       method: 'GET',
@@ -44,7 +43,6 @@ const MainTodo = () => {
   };
 
   const completeTodo = (id) => {
-    console.log('Output for: completeTodo -> id', id);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
