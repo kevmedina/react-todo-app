@@ -29,6 +29,7 @@
   border: 1px solid #a9a9a9;
   border-radius: 8px;
 }
+
 .completed {
   text-decoration: line-through;
   opacity: 0.5;

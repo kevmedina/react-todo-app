@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import AddTodo from './AddTodo';
-import TodoList from './TodoList';
+import React, { useState } from "react";
+import AddTodo from "./AddTodo";
+import TodoList from "./TodoList";
 
 const MainTodo = () => {
   const [todos, setTodos] = useState([]);
@@ -25,7 +25,7 @@ const MainTodo = () => {
   };
 
   const completeTodo = (id) => {
-    console.log('Output for: completeTodo -> id', id);
+    console.log("Output for: completeTodo -> id", id);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
