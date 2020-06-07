@@ -1,9 +1,27 @@
-import React, { useState } from "react";
-import AddTodo from "./AddTodo";
-import TodoList from "./TodoList";
+import React, { useState, useEffect } from 'react';
+import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 
 const MainTodo = () => {
   const [todos, setTodos] = useState([]);
+
+  const fetchPosts = async () => {
+    const URL = 'https://jsonplaceholder.typicode.com/todos';
+    const response = await fetch(URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log('Output for: fetchPosts -> response', data);
+    setTodos(data);
+  };
+
+  //
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -25,7 +43,6 @@ const MainTodo = () => {
   };
 
   const completeTodo = (id) => {
-    console.log("Output for: completeTodo -> id", id);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
@@ -35,6 +52,14 @@ const MainTodo = () => {
       })
     );
   };
+  const completeAll = (e) => {
+    const isCompleted = todos.every((todo) => todo.completed);
+    const updateTodo = todos.map((todo) => ({
+      ...todo,
+      completed: !isCompleted,
+    }));
+    setTodos(updateTodo);
+  };
 
   return (
     <div className="main-todo">
@@ -42,6 +67,7 @@ const MainTodo = () => {
       <AddTodo addTodo={addTodo} />
       <TodoList
         todos={todos}
+        completeAll={completeAll}
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}
         updateTodo={updateTodo}
