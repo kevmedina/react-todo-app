@@ -20,7 +20,7 @@ const MainTodo = () => {
 
   //
   useEffect(() => {
-    fetchPosts();
+    // fetchPosts();
   }, []);
 
   const addTodo = (todo) => {

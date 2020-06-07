@@ -4,7 +4,7 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
 const MainReduxTodo = ({ reduxTodos }) => {
-  console.log("MainReduxTodo -> reduxTodos", reduxTodos);
+
   const [todos, setTodos] = useState(reduxTodos);
 
   //
@@ -14,15 +14,9 @@ const MainReduxTodo = ({ reduxTodos }) => {
 
   return (
     <div className="main-todo">
-      <h1>Basic Todo App</h1>
+      <h1>React-Redux Todo App</h1>
       <AddTodo />
-      <TodoList
-        todos={todos}
-        // completeAll={completeAll}
-        // completeTodo={completeTodo}
-        // deleteTodo={deleteTodo}
-        // updateTodo={updateTodo}
-      />
+      <TodoList todos={todos} />
     </div>
   );
 };
