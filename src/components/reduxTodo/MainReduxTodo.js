@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-// import { getLocalStorage } from "../../authRedux/actions/todoActions";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
@@ -9,7 +8,6 @@ const MainReduxTodo = ({ reduxTodos }) => {
 
   //
   useEffect(() => {
-    // getLocalStorage();
     setTodos(reduxTodos);
   }, [reduxTodos]);
 
