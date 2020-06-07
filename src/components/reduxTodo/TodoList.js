@@ -22,7 +22,7 @@ const TodoList = ({ reduxTodos, completeAll }) => {
           })
           .map((todo, index, arr) => {
             return (
-              <span>
+              <span key={todo.id}>
                 {' '}
                 {`${index + 1}.${todo.title}${
                   arr.length === index + 1 ? '.' : '; '
