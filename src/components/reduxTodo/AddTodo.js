@@ -43,7 +43,7 @@ const AddTodo = ({ addTodo }) => {
 const mapStateToProps = (reduxStore) => {
   // console.log('reduxStore', reduxStore);
   return {
-    // addTodo: reduxStore.todoReducer.addTodo,
+    // todos: reduxStore.todoReducer.todos,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

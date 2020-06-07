@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import {
+  deleteTodo,
+  updateTodo,
+  completeTodo,
+} from '../../authRedux/actions/todoActions';
 
 const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
   const [editTodo, setEditTodo] = useState(todo.title);
@@ -28,7 +34,7 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
 
   return (
     <tr>
-      <th scope="row">#{todo.id}</th>
+      <th scope="row">#{todo.id.toString().slice(0, 4)}...</th>
       <td>
         <input
           type="checkbox"
@@ -58,4 +64,12 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
   );
 };
 
-export default Todo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTodo: (todoId) => dispatch(deleteTodo(todoId)),
+    updateTodo: (todoId) => dispatch(updateTodo(todoId)),
+    completeTodo: (todoId) => dispatch(completeTodo(todoId)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Todo);
