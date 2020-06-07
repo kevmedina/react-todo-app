@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { completeAll } from '../../authRedux/actions/todoActions';
 import Todo from './Todo';
@@ -12,10 +13,28 @@ const TodoList = ({ reduxTodos, completeAll }) => {
 
   return (
     <div>
+      <h2>
+        {`Due: ${moment(new Date()).format('L')}`}
+        <hr />
+        {todos
+          .filter((todo) => {
+            return todo.dueDate === moment(new Date()).format('L');
+          })
+          .map((todo, index, arr) => {
+            return (
+              <span>
+                {' '}
+                {`${index + 1}.${todo.title}${
+                  arr.length === index + 1 ? '.' : '; '
+                }`}{' '}
+              </span>
+            );
+          })}
+      </h2>
       <table className="table table-hover">
         <thead className="thead-light col-12">
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Due date</th>
             <th scope="col">
               <input
                 type="checkbox"

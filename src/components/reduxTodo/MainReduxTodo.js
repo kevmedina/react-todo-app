@@ -5,9 +5,9 @@ import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 
 const MainReduxTodo = ({ fetchTodos }) => {
-  useEffect(() => {
-    fetchTodos();
-  }, [fetchTodos]);
+  // useEffect(() => {
+  //   fetchTodos();
+  // }, [fetchTodos]);
   return (
     <div className="main-todo">
       <h1>React-Redux Todo App</h1>

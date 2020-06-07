@@ -1,5 +1,25 @@
 const initialState = {
-  todos: [],
+  todos: [
+    {
+      id: 1,
+      title: 'Todo one',
+      dueDate: '06/07/2020',
+      completed: false,
+    },
+    {
+      id: 2,
+      title: 'Todo two',
+      dueDate: '06/11/2020',
+      completed: false,
+    },
+    {
+      id: 3,
+      title: 'Todo three',
+      dueDate: '06/07/2020',
+      completed: true,
+    },
+  ],
+  dueTodos: [],
 };
 
 export const todoReducer = (state = initialState, action) => {
