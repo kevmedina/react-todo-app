@@ -13,15 +13,22 @@ const TodoList = ({ reduxTodos, completeAll }) => {
 
   return (
     <div>
-      {moment(new Date()).format('L')}
       <h2>
-        {'Due today: '}
+        {`Due: ${moment(new Date()).format('L')}`}
+        <hr />
         {todos
           .filter((todo) => {
             return todo.dueDate === moment(new Date()).format('L');
           })
-          .map((todo) => {
-            return <p> {`${todo.title}: ${todo.dueDate}`} </p>;
+          .map((todo, index, arr) => {
+            return (
+              <span>
+                {' '}
+                {`${index + 1}.${todo.title}${
+                  arr.length === index + 1 ? '.' : '; '
+                }`}{' '}
+              </span>
+            );
           })}
       </h2>
       <table className="table table-hover">
