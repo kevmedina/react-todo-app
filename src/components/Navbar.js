@@ -9,14 +9,14 @@ const Navbar = () => {
     width: 100%;
     display: flex;
     align-items: center;
-  `;
+  `; //
 
   return (
     <Nav>
       <Link className="link" to="/">
         Todo App
       </Link>
-      <Link className="link" to="/redux">
+      <Link className="link" to="/react-redux">
         Todo App with Redux
       </Link>
     </Nav>
