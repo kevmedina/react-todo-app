@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import AddTodo from './AddTodo';
-import TodoList from './TodoList';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import AddTodo from "./AddTodo";
+import TodoList from "./TodoList";
 
 const MainReduxTodo = ({ reduxTodos }) => {
-  console.log('MainReduxTodo -> reduxTodos', reduxTodos);
+  console.log("MainReduxTodo -> reduxTodos", reduxTodos);
   const [todos, setTodos] = useState(reduxTodos);
 
   //
