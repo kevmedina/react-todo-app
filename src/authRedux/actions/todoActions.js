@@ -27,7 +27,7 @@ export const fetchTodos = () => (dispatch) => {
   })
     .then((res) => res.json())
     .then((todos) => {
-      dispatch({ type: 'FETCH_TODOS', todos });
+      dispatch({ type: 'FETCH_TODOS', todos: todos.reverse() });
     })
     .catch((err) => console.log(err));
 };

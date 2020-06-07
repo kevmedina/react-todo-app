@@ -30,7 +30,7 @@ const TodoList = ({ reduxTodos, completeAll }) => {
           </tr>
         </thead>
         <tbody>
-          {todos?.reverse().map((todo) => {
+          {todos?.map((todo) => {
             return <Todo key={todo.id} todo={todo} />;
           })}
         </tbody>

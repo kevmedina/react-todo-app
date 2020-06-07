@@ -5,7 +5,7 @@ const initialState = {
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      const newLocalStorageTodos = [...state.todos, action.todo];
+      const newLocalStorageTodos = [action.todo, ...state.todos];
       localStorage.setItem('todos', JSON.stringify(newLocalStorageTodos));
       return {
         ...state,
