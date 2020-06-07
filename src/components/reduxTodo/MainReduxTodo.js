@@ -1,34 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { getLocalStorage } from "../../authRedux/actions/todoActions";
-import AddTodo from "./AddTodo";
-import TodoList from "./TodoList";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchTodos } from '../../authRedux/actions/todoActions';
+import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 
-const MainReduxTodo = ({ reduxTodos, getLocalStorage }) => {
-  const [todos, setTodos] = useState(reduxTodos);
-
-  //
+const MainReduxTodo = ({ fetchTodos }) => {
   useEffect(() => {
-    getLocalStorage();
-    setTodos(reduxTodos);
-  }, [reduxTodos, getLocalStorage]);
-
+    fetchTodos();
+  }, [fetchTodos]);
   return (
     <div className="main-todo">
       <h1>React-Redux Todo App</h1>
       <AddTodo />
-      <TodoList todos={todos} />
+      <TodoList />
     </div>
   );
 };
 
 const mapStateToProps = (reduxStore) => {
   // console.log('reduxStore', reduxStore);
-  return {
-    reduxTodos: reduxStore.todoReducer.todos,
-  };
+  return {};
 };
 const mapDispatchToProps = (dispatch) => ({
-  getLocalStorage: () => dispatch(getLocalStorage()),
+  fetchTodos: () => dispatch(fetchTodos()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MainReduxTodo);
