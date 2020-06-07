@@ -52,11 +52,6 @@ export const todoReducer = (state = initialState, action) => {
         ...state,
         todos: updatedTodos,
       };
-
-    case "LOCAL_STORAGE":
-      const lsTodos = JSON.parse(localStorage.getItem("todos"));
-      console.log("locaol storage: ", lsTodos);
-      return state;
     default:
       return state;
   }

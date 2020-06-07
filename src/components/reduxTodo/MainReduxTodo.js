@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getLocalStorage } from "../../authRedux/actions/todoActions";
+// import { getLocalStorage } from "../../authRedux/actions/todoActions";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
-const MainReduxTodo = ({ reduxTodos, getLocalStorage }) => {
+const MainReduxTodo = ({ reduxTodos }) => {
   const [todos, setTodos] = useState(reduxTodos);
 
   //
   useEffect(() => {
-    getLocalStorage();
+    // getLocalStorage();
     setTodos(reduxTodos);
-  }, [reduxTodos, getLocalStorage]);
+  }, [reduxTodos]);
 
   return (
     <div className="main-todo">
@@ -28,7 +28,5 @@ const mapStateToProps = (reduxStore) => {
     reduxTodos: reduxStore.todoReducer.todos,
   };
 };
-const mapDispatchToProps = (dispatch) => ({
-  getLocalStorage: () => dispatch(getLocalStorage()),
-});
+const mapDispatchToProps = (dispatch) => ({});
 export default connect(mapStateToProps, mapDispatchToProps)(MainReduxTodo);

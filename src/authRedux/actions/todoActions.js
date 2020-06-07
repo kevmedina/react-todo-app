@@ -17,10 +17,6 @@ export const completeAll = () => (dispatch) => {
   dispatch({ type: "COMPLETE_ALL" });
 };
 
-export const getLocalStorage = () => (dispatch) => {
-  dispatch({ type: "LOCAL_STORAGE", todos: "todos" });
-};
-
 // export const fetchPosts = async () => {
 //   const URL = 'https://jsonplaceholder.typicode.com/todos';
 //   const response = await fetch(URL, {
