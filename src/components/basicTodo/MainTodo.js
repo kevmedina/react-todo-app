@@ -20,7 +20,7 @@ const MainTodo = () => {
 
   //
   useEffect(() => {
-    fetchPosts();
+    // fetchPosts();
   }, []);
 
   const addTodo = (todo) => {
@@ -34,7 +34,7 @@ const MainTodo = () => {
   const updateTodo = (updatedTodo) => {
     const newTodos = todos.map((todo) => {
       if (updatedTodo.id === todo.id) {
-        return { ...todo, task: updatedTodo.task };
+        return { ...todo, title: updatedTodo.title };
       }
       return todo;
     });

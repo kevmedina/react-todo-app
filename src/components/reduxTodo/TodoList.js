@@ -1,13 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { completeAll } from '../../authRedux/actions/todoActions';
 import Todo from './Todo';
 
-const TodoList = ({
-  todos,
-  deleteTodo,
-  updateTodo,
-  completeTodo,
-  completeAll,
-}) => {
+const TodoList = ({ todos, completeAll }) => {
   return (
     <div>
       <table className="table table-hover">
@@ -17,7 +13,7 @@ const TodoList = ({
             <th scope="col">
               <input
                 type="checkbox"
-                onClick={(e) => completeAll(e)}
+                onClick={() => completeAll()}
                 style={{ marginRight: '5px' }}
               />
               Completed
@@ -33,9 +29,7 @@ const TodoList = ({
               <Todo
                 key={todo.id}
                 todo={todo}
-                deleteTodo={deleteTodo}
-                updateTodo={updateTodo}
-                completeTodo={completeTodo}
+                // completeTodo={completeTodo}
               />
             );
           })}
@@ -44,5 +38,7 @@ const TodoList = ({
     </div>
   );
 };
-
-export default TodoList;
+const mapDispatchToProps = (dispatch) => ({
+  completeAll: () => dispatch(completeAll()),
+});
+export default connect(null, mapDispatchToProps)(TodoList);
