@@ -34,7 +34,7 @@ const Todo = ({ todo, deleteTodo, updateTodo, completeTodo }) => {
 
   return (
     <tr>
-      <th scope="row">#{todo.id.toString().slice(0, 4)}...</th>
+      <th scope="row">{todo.dueDate}</th>
       <td>
         <input
           type="checkbox"

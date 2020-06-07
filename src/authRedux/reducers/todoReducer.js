@@ -1,11 +1,31 @@
 const initialState = {
-  todos: JSON.parse(localStorage.getItem("todos")),
+  todos: [
+    {
+      id: 1,
+      title: "Todo one",
+      dueDate: "06/07/2020",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "Todo two",
+      dueDate: "06/11/2020",
+      completed: false,
+    },
+    {
+      id: 3,
+      title: "Todo three",
+      dueDate: "06/07/2020",
+      completed: true,
+    },
+  ],
+  dueTodos: [],
 };
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      const newLocalStorageTodos = [...state.todos, action.todo];
+      const newLocalStorageTodos = [action.todo, ...state.todos];
       localStorage.setItem("todos", JSON.stringify(newLocalStorageTodos));
       return {
         ...state,
@@ -51,6 +71,13 @@ export const todoReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: updatedTodos,
+      };
+    case "FETCH_TODOS":
+      const fetchTodos = action.todos;
+      localStorage.setItem("todos", JSON.stringify(fetchTodos));
+      return {
+        ...state,
+        todos: fetchTodos,
       };
     default:
       return state;
