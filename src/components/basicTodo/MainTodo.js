@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import AddTodo from './AddTodo';
-import TodoList from './TodoList';
+import React, { useState, useEffect } from "react";
+import AddTodo from "./AddTodo";
+import TodoList from "./TodoList";
 
 const MainTodo = () => {
   const [todos, setTodos] = useState([]);
 
   const fetchPosts = async () => {
-    const URL = 'https://jsonplaceholder.typicode.com/todos';
+    const URL = "https://jsonplaceholder.typicode.com/todos";
     const response = await fetch(URL, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     const data = await response.json();
-    console.log('Output for: fetchPosts -> response', data);
+    console.log("Output for: fetchPosts -> response", data);
     setTodos(data);
   };
 

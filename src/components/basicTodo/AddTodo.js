@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { v4 as uuid } from 'uuid';
+import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const AddTodo = ({ addTodo }) => {
   const [todo, setTodo] = useState({
-    id: '',
-    title: '',
+    id: "",
+    title: "",
     completed: false,
   });
 
@@ -19,7 +19,7 @@ const AddTodo = ({ addTodo }) => {
     e.preventDefault();
     if (todo.title.trim()) {
       addTodo({ ...todo, id: uuid() });
-      setTodo({ ...todo, title: '' });
+      setTodo({ ...todo, title: "" });
     }
   };
 
