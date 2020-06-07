@@ -1,5 +1,5 @@
 export const addTodo = (todo) => (dispatch) => {
-  dispatch({ type: 'ADD_TODO', todo });
+  dispatch({ type: "ADD_TODO", todo });
 };
 
 // export const deleteTodo = (id) => {
@@ -9,7 +9,7 @@ export const addTodo = (todo) => (dispatch) => {
 // export const updateTodo = (updatedTodo) => {
 //   const newTodos = todos.map((todo) => {
 //     if (updatedTodo.id === todo.id) {
-//       return { ...todo, task: updatedTodo.task };
+//       return { ...todo, title: updatedTodo.title };
 //     }
 //     return todo;
 //   });
