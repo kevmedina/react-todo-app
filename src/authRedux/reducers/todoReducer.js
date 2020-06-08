@@ -19,7 +19,6 @@ const initialState = {
       completed: true,
     },
   ],
-  dueTodos: [],
 };
 
 export const todoReducer = (state = initialState, action) => {
@@ -77,7 +76,7 @@ export const todoReducer = (state = initialState, action) => {
       localStorage.setItem("todos", JSON.stringify(fetchTodos));
       return {
         ...state,
-        todos: fetchTodos,
+        todos: [...state.todos, ...fetchTodos],
       };
     default:
       return state;

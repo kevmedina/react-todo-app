@@ -31,18 +31,3 @@ export const fetchTodos = () => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-// export const fetchTodos = async () => {
-//   const response = await fetch(URL, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
-//   const data = await response.json();
-//   console.log('Output for: fetchTodos -> data', data);
-
-//   return (dispatch) => {
-//       dispatch({ type: 'FETCH_TODOS', todos: data });
-//   };
-//   // console.log('Output for: fetchPosts -> response', data);
-// };
