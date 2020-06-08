@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { v4 as uuid } from 'uuid';
-import { addTodo } from '../../authRedux/actions/todoActions';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { v4 as uuid } from "uuid";
+import { addTodo } from "../../authRedux/actions/todoActions";
 
 const AddTodo = ({ addTodo }) => {
   const [todo, setTodo] = useState({
-    id: '',
-    title: '',
+    id: "",
+    title: "",
     completed: false,
   });
 
@@ -21,7 +21,7 @@ const AddTodo = ({ addTodo }) => {
     e.preventDefault();
     if (todo.title.trim()) {
       addTodo({ ...todo, id: uuid() });
-      setTodo({ ...todo, title: '', id: '' });
+      setTodo({ ...todo, title: "", id: "" });
     }
   };
 
@@ -41,7 +41,6 @@ const AddTodo = ({ addTodo }) => {
 };
 
 const mapStateToProps = (reduxStore) => {
-  // console.log('reduxStore', reduxStore);
   return {
     // todos: reduxStore.todoReducer.todos,
   };

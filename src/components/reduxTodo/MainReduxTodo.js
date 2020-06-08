@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchTodos } from '../../authRedux/actions/todoActions';
-import AddTodo from './AddTodo';
-import TodoList from './TodoList';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchTodos } from "../../authRedux/actions/todoActions";
+import AddTodo from "./AddTodo";
+import TodoList from "./TodoList";
 
 const MainReduxTodo = ({ fetchTodos }) => {
   useEffect(() => {
@@ -18,7 +18,6 @@ const MainReduxTodo = ({ fetchTodos }) => {
 };
 
 const mapStateToProps = (reduxStore) => {
-  // console.log('reduxStore', reduxStore);
   return {};
 };
 const mapDispatchToProps = (dispatch) => ({
