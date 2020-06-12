@@ -2,20 +2,20 @@ const initialState = {
   todos: [
     {
       id: 1,
-      title: 'Todo one',
-      dueDate: '06/07/2020',
+      title: "Todo one",
+      dueDate: "06/07/2020",
       completed: false,
     },
     {
       id: 2,
-      title: 'Todo two',
-      dueDate: '06/11/2020',
+      title: "Todo two",
+      dueDate: "06/11/2020",
       completed: false,
     },
     {
       id: 3,
-      title: 'Todo three',
-      dueDate: '06/07/2020',
+      title: "Todo three",
+      dueDate: "06/07/2020",
       completed: true,
     },
   ],
@@ -23,14 +23,14 @@ const initialState = {
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case "ADD_TODO":
       const newLocalStorageTodos = [action.todo, ...state.todos];
-      localStorage.setItem('todos', JSON.stringify(newLocalStorageTodos));
+      localStorage.setItem("todos", JSON.stringify(newLocalStorageTodos));
       return {
         ...state,
         todos: newLocalStorageTodos,
       };
-    case 'COMPLETE_ALL':
+    case "COMPLETE_ALL":
       const isCompleted = state.todos.every((todo) => todo.completed);
       const updateTodos = state.todos.map((todo) => ({
         ...todo,
@@ -40,7 +40,7 @@ export const todoReducer = (state = initialState, action) => {
         ...state,
         todos: updateTodos,
       };
-    case 'COMPLETE_TODO':
+    case "COMPLETE_TODO":
       const completedTodos = state.todos.map((todo) => {
         if (todo.id === action.id) {
           return { ...todo, completed: !todo.completed };
@@ -52,29 +52,28 @@ export const todoReducer = (state = initialState, action) => {
         ...state,
         todos: completedTodos,
       };
-    case 'UPDATE_TODO':
+    case "UPDATE_TODO":
       const newTodos = state.todos.map((todo) => {
         if (action.updatedTodo.id === todo.id) {
           return { ...todo, title: action.updatedTodo.title };
         }
         return todo;
       });
-      localStorage.setItem('todos', JSON.stringify(newTodos));
+      localStorage.setItem("todos", JSON.stringify(newTodos));
       return {
         ...state,
         todos: newTodos,
       };
-    case 'DELETE_TODO':
+    case "DELETE_TODO":
       const updatedTodos = state.todos.filter((todo) => todo.id !== action.id);
-      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+      localStorage.setItem("todos", JSON.stringify(updatedTodos));
       return {
         ...state,
         todos: updatedTodos,
       };
-
-    case 'FETCH_TODOS':
+    case "FETCH_TODOS":
       const fetchTodos = action.todos;
-      localStorage.setItem('todos', JSON.stringify(fetchTodos));
+      localStorage.setItem("todos", JSON.stringify(fetchTodos));
       return {
         ...state,
         todos: [...state.todos, ...fetchTodos],
