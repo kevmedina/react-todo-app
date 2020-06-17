@@ -6,30 +6,38 @@ import Todo from './Todo';
 
 const TodoList = ({ reduxTodos, completeAll }) => {
   const [todos, setTodos] = useState(reduxTodos);
+  const [dueTodos, setDueTodos] = useState([]);
+
+  const updateTodos = () => {
+    setTodos(reduxTodos);
+    setDueTodos(
+      todos.filter((todo) => {
+        return todo.dueDate === moment(new Date()).format('L');
+      })
+    );
+  };
 
   useEffect(() => {
-    setTodos(reduxTodos);
+    updateTodos();
+    // eslint-disable-next-line
   }, [reduxTodos]);
 
   return (
     <div>
       <h2>
-        {`Due: ${moment(new Date()).format('L')}`}
+        {dueTodos.length && `Due: ${moment(new Date()).format('L')}`}
         <hr />
-        {todos
-          .filter((todo) => {
-            return todo.dueDate === moment(new Date()).format('L');
-          })
-          .map((todo, index, arr) => {
-            return (
-              <span key={todo.id}>
-                {' '}
-                {`${index + 1}.${todo.title}${
-                  arr.length === index + 1 ? '.' : '; '
-                }`}{' '}
-              </span>
-            );
-          })}
+        {dueTodos.length
+          ? dueTodos.map((todo, index, arr) => {
+              return (
+                <span key={todo.id}>
+                  {`${index + 1}.${todo.title}${
+                    arr.length === index + 1 ? '.' : '; '
+                  }`}{' '}
+                </span>
+              );
+            })
+          : ''}
       </h2>
       <table className="table table-hover">
         <thead className="thead-light col-12">
